@@ -1,0 +1,14 @@
+mutation createAGroup($input: CreateGroupInput!) {
+  createGroup(input: $input) {
+    id
+    name
+    link
+    description
+    createdAt
+    coach {
+      id
+      firstName
+      lastName
+    }
+  }
+}

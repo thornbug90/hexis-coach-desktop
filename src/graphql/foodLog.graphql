@@ -1,0 +1,51 @@
+query foodLog($verificationId: String!) {
+  foodLog(verificationId: $verificationId) {
+    foodObjects {
+      id
+      name
+      description
+      type
+      quantity {
+        name
+        unit
+        value
+      }
+      portions {
+        name
+        unit
+        value
+      }
+      nutrients {
+        name
+        slug
+        unit
+        value
+        percentRI
+        nutrients {
+          name
+          slug
+          unit
+          value
+          percentRI
+          nutrients {
+            name
+            slug
+            unit
+            value
+            percentRI
+          }
+        }
+      }
+      tags {
+        name
+        checked
+      }
+    }
+    quantities
+    portions {
+      name
+      unit
+      value
+    }
+  }
+}

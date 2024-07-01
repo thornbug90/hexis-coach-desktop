@@ -1,69 +1,34 @@
-<<<<<<< HEAD
-# Hexis Backend API
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-A GraphQL API for Hexis Web & App
+## Getting Started
 
-## Prerequisites
-
-To build and run this app locally you will need:
-
-- Install [Node.js](https://nodejs.org/en/)
-- Install [Redis](https://redis.io/docs/getting-started/)
-- Install [Postgres](https://www.postgresql.org/download/)
-
-# Getting Started
-
-- Clone the repository and Install dependencies
-
-```bash
-npm install
-# or
-yarn
-```
-
-- Create a `.env` file by duplicating the contents of `.example.env` and updating the fields respectively (Speak to a fellow developer)
-
-```
-cp .example.env .env
-```
-
-- Run the project
+First, run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
+# or
+pnpm dev
 ```
 
-## Environment variables
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Create a .env file (or just rename the .example.env) containing all the env variables you want to set, dotenv library will take care of setting them. This project is using three variables at the moment:
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- `PORT` -> Port where the server will be started on
-- `DATABASE_URL` -> A remote Postgres URL. e.g. =postgres://postgres:xxxxx@db.zbbwlvunazmamwsjhwrv.supabase.co:6543/postgres?pgbouncer=true
-- `REDIS_PASSWORD` -> Redis Database credentials
-- `ENGINES_API_ENDPOINT` -> A python endpoint for Hexis
-- `SUPABASE_URL` -> Supabase database URL
-- `SUPABASE_SERVICE_ROLE_KEY` -> Supabase Service role key
-- `SUPABASE_IMAGE_ASSETS_URL` -> URL for where the assets are stored
-- `STRIPE_SECRET_KEY` -> Stripe key
-- `SENTRY_DSN` -> Sentry URL
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-### Adding types and definitions to Prisma
+## Learn More
 
-1. Add in the type to the enums file under source -> schems -> enums.ts
-1. Update the schema.prisma file in prisma -> schema.prisma with the enum and use it.
-1. Run `npm run postinstall` and it should create the definition for you.
+To learn more about Next.js, take a look at the following resources:
 
-## Creators
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-**Team**
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-- <https://github.com/orgs/abs-hexis/people>
+## Deploy on Vercel
 
-## Copyright and License
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-copyright 2022 ABS
-=======
-# hexis-backend
->>>>>>> 3c3e923a10797ec3daf6299076fc4d23440cb8a3
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

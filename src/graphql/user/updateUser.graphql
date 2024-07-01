@@ -1,0 +1,72 @@
+mutation updateUser($input: UpdateUserInput!) {
+  updateUser(input: $input) {
+    id
+    mealplan {
+      meals {
+        id
+        time
+        mealName
+        dayName
+        mealType
+        mealSubType
+        mealplanId
+      }
+    }
+    favouriteActivities {
+      activityId
+      primary
+    }
+    email
+    dob
+    firstName
+    lastName
+    onboardingComplete
+    newsletterSubscriber
+    goal
+    weight
+    weightUnit
+    height
+    heightUnit
+    targetWeight
+    sex
+    genderIdentity
+    lifestyleActivity
+    sleepTime
+    wakeTime
+    totalActivityDuration
+    created
+    hasActiveSubscription
+    customerId
+    pointId
+    pointRefreshToken
+    updated
+    timezone
+    associatedCustomerId
+    wearableId
+    Efficiency
+    RMR
+    entitlements {
+      id
+      value
+    }
+    userAudit {
+      date
+      weight
+      goal
+    }
+    notificationTokens {
+      token
+    }
+    # wearableSources {
+    #   id
+    #   userId
+    #   name
+    #   description
+    #   image
+    #   authorizationUrl
+    #   status
+    #   platform
+    #   updatedAt
+    # }
+  }
+}

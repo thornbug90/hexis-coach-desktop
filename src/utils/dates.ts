@@ -1,48 +1,63 @@
-import { roundToNearestMinutes, differenceInDays } from "date-fns";
-import set from "date-fns/set";
+import { differenceInDays, format } from "date-fns";
 import dayjs from "dayjs";
+import set from "date-fns/set";
 import utc from "dayjs/plugin/utc";
+import isToday from "dayjs/plugin/isToday";
 import timezone from "dayjs/plugin/timezone";
-import numeral from "numeral";
-
-type DateArg = string | number | Date;
 
 dayjs.extend(utc);
+dayjs.extend(isToday);
 dayjs.extend(timezone);
 
-export const hexisDayjs = dayjs;
-
-export const formatTimes = (time: Date) =>
-  dayjs(roundToNearestMinutes(time, { nearestTo: 1 }))
-    .utc()
-    .format("HH:mm");
-
-export const getTime = (date?: Date) => {
-  if (!date) return "";
-
-  const [hours = "00", minutes = "00"] = date.toISOString().split("T")[1].split(":");
-
-  return `${hours}:${minutes}`;
+export const getTime = (date: string | Date) => {
+  const d = dayjs(date);
+  return `${d.get("hours")}:${d.get("minutes")}`;
 };
 
 export const parseTime = (time: string, date = new Date()) => {
-  const [hours, minutes, seconds] = time.slice(0, 8).split(":");
-  date.setUTCHours(Number(hours));
-  date.setUTCMinutes(Number(minutes));
-  date.setUTCSeconds(Number(seconds) || 0);
+  const [hours, minutes, seconds = "00"] = (time ?? "00:00:00").slice(0, 8).split(":");
 
-  return date;
+  return set(date, {
+    year: date.getUTCFullYear(),
+    month: date.getUTCMonth(),
+    date: date.getUTCDate(),
+    hours: Number(hours),
+    minutes: Number(minutes),
+    seconds: Number(seconds),
+  });
 };
 
 export const serializeTime = (date: Date) => {
   const newDate = set(date, { milliseconds: 0, seconds: 0 });
-  return dayjs(newDate).utc().format("HH:mm:ss.SSS[Z]");
+  return format(newDate, "HH:mm:ss.SSS'Z'");
 };
 
 export const moreThanAWeekAhead = (appDate: Date) => differenceInDays(appDate, new Date()) >= 6;
 
-export const setLiteralDateTime = (time: string = "", date: DateArg = new Date()) =>
-  new Date(`${dayjs(date).utc().format("YYYY-MM-DD")}T${time}Z`);
+export const setLocalDateTime = (time: string, date = new Date()) => new Date(`${format(date, "Y-MM-dd")}T${time}`);
+
+export const createDateTime = (date = new Date()) => {
+  const time = getLiteralTime(date);
+  const [hour = "00", minutes = "00"] = time.split(":");
+
+  return dayjs.utc(dayjs(date).format("YYYY-MM-DD")).hour(+hour).minute(+minutes).toDate();
+};
+
+export const createRelativeDateTime = (date = new Date()) => {
+  const time = getRelativeTime(date);
+  const [hour = "00", minutes = "00"] = time.split(":");
+
+  return dayjs.utc(dayjs(date).format("YYYY-MM-DD")).hour(+hour).minute(+minutes).toDate();
+};
+
+export const setLiteralDateTime = (time: string = "", date: string | number | Date = new Date()) =>
+  new Date(`${dayjs(date).format("YYYY-MM-DD")}T${time}`);
+
+export const setRelativeDateTime = (time: string = "", date: string | number | Date = new Date()) => {
+  const [hour = "00", minutes = "00"] = time?.split?.(":");
+
+  return dayjs.utc(dayjs(date).format("YYYY-MM-DD")).hour(+hour).minute(+minutes).toDate();
+};
 
 export const getLiteralTime = (date: Date) => {
   if (!date) return new Date().toISOString();
@@ -52,38 +67,54 @@ export const getLiteralTime = (date: Date) => {
   return `${hours}:${minutes}`;
 };
 
-export const getRelativeTime = (date: Date) => dayjs(date).utc().format("HH:mm");
+export const getLiteralTimeInMS = (date: Date) => {
+  if (!date) return new Date().toISOString();
 
-export const getTimezoneTime = (date: Date, timezone?: string) => dayjs.utc(date).tz(timezone).format("HH:mm");
+  const [hours, minutes] = date.toISOString().split("T")[1].slice(0, 8).split(":");
 
-export const getTimezoneTimeWithOffset = (date: Date, offset: number) => dayjs(date).utcOffset(offset).format("HH:mm");
+  return `${hours}:${minutes}`;
+};
 
-export const getTimezoneDateWithOffset = (date: Date, offset: number) => dayjs(date).utcOffset(offset).format("YYYY-MM-DD");
+export const getRelativeTime = (date: Date) => {
+  const d = dayjs(date);
+  return `${d.get("hours")}:${d.get("minutes")}`;
+};
 
-export const getTimezoneDate = (date: Date, timezone?: string) => dayjs.utc(date).tz(timezone).format("YYYY-MM-DD");
+export const getLiteralDate = (date: string | number | Date = new Date()) => new Date(dayjs(date).format("YYYY-MM-DD"));
 
-export const getLiteralDateString = (date: DateArg = new Date(), format = "YYYY-MM-DD") => dayjs(date).utc().format(format);
+export const getLiteralUTCDate = (date: string | number | Date = new Date()) => new Date(dayjs(date).utc().format("YYYY-MM-DD"));
 
-export const getLiteralDate = (date: DateArg = new Date()) => new Date(dayjs(date).utc().format("YYYY-MM-DD"));
+export const getLiteralDateString = (date: string | number | Date = new Date(), format = "YYYY-MM-DD") => dayjs(date).utc().format(format);
 
-export const getStartOfDay = (date = new Date()) => dayjs(date).utc().startOf("day").toDate();
+export const getStartOfDay = (date = new Date(), keepLocalTime?: boolean) => dayjs(date).utc(keepLocalTime).startOf("day").toDate();
 
-export const getEndOfDay = (date = new Date()) => dayjs(date).utc().endOf("day").toDate();
+export const getEndOfDay = (date = new Date(), keepLocalTime?: boolean) => dayjs(date).utc(keepLocalTime).endOf("day").toDate();
 
-export function convertUTCOffsetToMinutes(offset: string = ""): number {
-  const formattedTime = offset.replace(/UTC/gi, "");
-  const positiveOrMinus = formattedTime.slice(0, 1) || "+";
-  const [hoursWithPlusOrMinutes = "0", minutes = "00"] = formattedTime.split(":");
-  const hoursConvertedToMinutes = numeral(hoursWithPlusOrMinutes.slice(1) || 0)
-    .multiply(60)
-    .add(minutes)
-    .value();
+export const isDateToday = (date = new Date()) => dayjs(date).isToday();
+export const isUTCDateToday = (date = new Date()) => dayjs(date).utc().isToday();
 
-  const result = numeral(`${positiveOrMinus}${hoursConvertedToMinutes}`).value();
+export const convertToUTC = (date: string | number | Date = new Date(), keepLocalTime?: boolean) => dayjs(date).utc(keepLocalTime).toDate();
 
-  return result || 0;
+export const getTimezone = () => dayjs.tz.guess();
+
+export const isSameDay = (date1: Date, date2: Date) => dayjs(date1).utc().isSame(date2, "day");
+
+export function originalDateTime(date: Date, offset: number = 0) {
+  return dayjs(date).utcOffset(offset);
 }
 
-export function originalDateTimeTZ(date: Date, timezone?: string) {
-  return dayjs(date).tz(timezone);
+export function originalDateTimeTZ(date: Date, timezone: string = "", format: string = "YYYY-MM-DD") {
+  return dayjs(date, timezone).format(format);
 }
+
+export const formatTimeHourMinute = (time: string) => {
+  if (!time) return "--:--";
+  const [hour, minute] = time.split(":");
+  return `${hour}:${minute}`;
+};
+
+export const getTimeFormatfromHHMM = (time: string) => {
+  const date = dayjs().format("YYYY-MM-DD"); // Get current date
+  const dateTime = dayjs(`${date}T${time}`).format("HH:mm:ss.SSSZ");
+  return dateTime;
+};

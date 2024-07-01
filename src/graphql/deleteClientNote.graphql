@@ -1,0 +1,10 @@
+mutation deleteClientNote($deleteNoteId: ID!) {
+  deleteNote(id: $deleteNoteId) {
+    id
+    coachId
+    clientId
+    title
+    body
+    createdAt
+  }
+}

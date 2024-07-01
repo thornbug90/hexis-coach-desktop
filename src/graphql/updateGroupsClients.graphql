@@ -1,0 +1,20 @@
+mutation updateGroupClients($updateClientsId: ID!, $clientIds: [String]!) {
+  updateClients(id: $updateClientsId, clientIds: $clientIds) {
+    id
+    firstName
+    lastName
+    sex
+    weight
+    weightUnit
+    favouriteActivities {
+      activity {
+        id
+        name
+        slug
+      }
+      activityId
+      primary
+    }
+    goal
+  }
+}

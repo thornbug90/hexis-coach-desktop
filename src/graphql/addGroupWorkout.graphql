@@ -1,0 +1,5 @@
+mutation addGroupWorkout($id: ID!, $input: CreateWorkoutInput!) {
+  addGroupWorkout(id: $id, input: $input) {
+    id
+  }
+}

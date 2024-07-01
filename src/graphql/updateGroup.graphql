@@ -1,0 +1,14 @@
+mutation updateGroup($updateGroupId: ID!, $input: UpdateGroupInput!) {
+  updateGroup(id: $updateGroupId, input: $input) {
+    id
+    name
+    link
+    description
+    createdAt
+    coach {
+      id
+      firstName
+      lastName
+    }
+  }
+}

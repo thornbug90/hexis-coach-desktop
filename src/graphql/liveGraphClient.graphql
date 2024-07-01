@@ -1,0 +1,9 @@
+query liveGraphClientByDate($date: DateTime!, $id: String!) {
+  liveGraphClient(date: $date, id: $id) {
+    graph {
+      time
+      data
+    }
+    predictedEnd
+  }
+}

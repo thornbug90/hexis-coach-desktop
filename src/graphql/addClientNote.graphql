@@ -1,0 +1,14 @@
+mutation addClientNote($input: NoteInput!) {
+  addClientNote(input: $input) {
+    id
+    coachId
+    clientId
+    title
+    body
+    createdAt
+    dayNoteDay
+    utcOffset
+    type
+    alertNotification
+  }
+}

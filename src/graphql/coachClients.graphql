@@ -1,0 +1,49 @@
+query getCoachClients {
+  users {
+    id
+    firstName
+    lastName
+    email
+    dob
+    genderIdentity
+    sex
+    height
+    weight
+    heightUnit
+    weightUnit
+    sleepTime
+    wakeTime
+    goal
+    targetWeight
+    lifestyleActivity
+    totalActivityDuration
+    newsletterSubscriber
+    onboardingComplete
+    created
+    updated
+    pointId
+    pointRefreshToken
+    customerId
+    hasActiveSubscription
+    favouriteActivities {
+      activity {
+        id
+        name
+        slug
+      }
+      activityId
+      primary
+    }
+    mealplan {
+      meals {
+        id
+        time
+        mealName
+        dayName
+        mealType
+        mealSubType
+        mealplanId
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+mutation sendInvitations($input: [InvitationInput!]!) {
+  invite(input: $input) {
+    invites {
+      id
+      to
+      code
+      planId
+      status
+      fromUser {
+        id
+        customerId
+        firstName
+        lastName
+        email
+      }
+      payingCustomer {
+        customerId
+      }
+      created
+      expire
+    }
+    errors
+  }
+}

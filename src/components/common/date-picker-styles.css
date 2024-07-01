@@ -1,0 +1,231 @@
+.DateInput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: auto;
+  display: inline;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.DateInput_input {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: transparent;
+  height: 34px;
+  cursor: pointer;
+  padding: 4px;
+  text-align: center;
+}
+
+.DateRangePickerInput {
+  width: 162px;
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  height: 34px;
+  background-color: transparent;
+}
+
+.DateRangePickerInput_arrow {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 7px;
+  color: white;
+  cursor: pointer;
+}
+
+.DateRangePicker_picker {
+  z-index: 1;
+  background-color: #242543;
+  min-width: 329px;
+  min-height: 386px;
+  position: absolute;
+  border: 1px solid #e7e7e780;
+  border-radius: 7px;
+  padding: 0;
+  margin: 0;
+}
+
+.DayPicker {
+  background-color: #242543;
+  border-radius: 7px;
+  min-width: 329px;
+  min-height: 300px;
+  padding-bottom: 0;
+}
+
+.SingleDatePicker_picker {
+  background-color: #242543;
+  border-radius: 7px;
+  min-width: 329px;
+  min-height: 300px;
+  padding-bottom: 0;
+}
+
+.DayPicker_transitionContainer__vertical {
+  width: 100%;
+  background-color: #242543;
+  border-radius: 7px;
+}
+
+.CalendarMonth {
+  background: #242543;
+  text-align: center;
+  color: #ffffff;
+  vertical-align: top;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.CalendarMonth_caption {
+  color: #ffffff;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 22px;
+  padding-bottom: 37px;
+  caption-side: initial;
+}
+
+.DayPicker_weekHeader {
+  color: #ffffff;
+  position: absolute;
+  top: 62px;
+  z-index: 2;
+  text-align: left;
+}
+
+.CalendarDay__blocked_calendar {
+  color: #717171 !important;
+}
+
+.CalendarMonthGrid {
+  background: #242543;
+  text-align: left;
+  border-radius: 7px;
+  color: #ffffff;
+  z-index: 0;
+}
+
+.CalendarDay {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 10px;
+  text-align: center;
+}
+
+.CalendarDay__default {
+  border: 1px solid #242543;
+  color: #ffffff;
+  background: #242543;
+}
+
+.DateInput_input__focused {
+  outline: 0;
+  background: transparent;
+  border: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: none;
+  border-left: 0;
+}
+
+.DayPickerNavigation_button__default {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+}
+
+.DayPickerNavigation_svg__horizontal {
+  height: 19px;
+  width: 19px;
+  fill: white;
+  display: block;
+}
+
+.DateInput_fangShape {
+  fill: transparent;
+}
+.DateInput_fangStroke {
+  stroke: transparent;
+  fill: transparent;
+}
+
+.DayPickerKeyboardShortcuts_show__bottomRight::before {
+  display: none;
+}
+.DayPickerKeyboardShortcuts_showSpan {
+  display: none;
+}
+.DayPickerKeyboardShortcuts {
+  display: none !important;
+}
+
+.DayPickerKeyboardShortcuts_show__topRight {
+  display: none;
+}
+
+.custom-prev-button {
+  position: absolute;
+  top: 26px;
+  left: 64px;
+}
+
+.custom-next-button {
+  position: absolute;
+  top: 26px;
+  right: 64px;
+}
+
+.CalendarDay__default:hover {
+  background: #359cef33;
+  color: inherit;
+  border: none;
+  height: 26px;
+  width: 26px;
+}
+
+.CalendarDay__selected_span {
+  background: #359cef33;
+  border: none;
+  color: #fff;
+}
+
+.CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover,
+.CalendarDay__selected:before,
+.CalendarDay__selected:after {
+  background: rgba(53, 156, 239, 0.5);
+  border-radius: 0;
+}
+
+.CalendarDay__selected_start {
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 100%;
+}
+
+.CalendarDay__selected_end {
+  border-top-right-radius: 100%;
+  border-bottom-right-radius: 100%;
+}
+
+.CalendarDay__today {
+  color: #359cef;
+}
+
+.CalendarDay__outside {
+  border: 0;
+  background: transparent;
+  color: #717171;
+}
+
+.SingleDatePickerInput {
+  background: #18152d;
+  border: none;
+  color: #fff;
+}

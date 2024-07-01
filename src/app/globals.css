@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  overflow-y: hidden;
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+@layer components {
+  .base-button {
+    @apply text-white bg-activeblue-100 p-3 rounded-lg font-semibold min-w-[50%];
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #24223c;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #46486f;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* custom checkboxes for filter dropdown menu */
+/* Customize the label (the container) */
+.container {
+  /* just to select the parent*/
+}
+
+.checkbox-input {
+  /* to select checkboxes for clearing filters */
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  border-radius: 3px;
+  margin-top: 0.1rem;
+  top: 3;
+  left: 0.1;
+  height: 18px;
+  width: 18px;
+  background-color: #3c3c43ab;
+  border: 1.5px solid #474864;
+}
+
+.checkmark-workout-modal {
+  top: 50%;
+  right: 0%;
+  transform: translateY(-50%);
+  background-color: #4e4b66;
+  border: none;
+}
+
+/* When the checkbox is checked, add a #359CEF background */
+.container input:checked ~ .checkmark {
+  background-color: #359cef;
+  border-color: #359cef;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 5.5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* hide default time picker icon */
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background: transparent;
+  color: transparent;
+  display: block;
+  width: 1em;
+  height: 1em;
+  margin-left: -1em;
+  cursor: pointer;
+}
+
+/* display chevron as the time picker icon */
+input[type="time"] {
+  background-image: url("../../public/icons/general/ChevronDownIcon.svg");
+  background-repeat: no-repeat;
+  background-size: 1em 1em; /* Adjust the size as needed */
+  background-position: right center;
+  /* padding-right: 1.5em; Adjust padding for spacing */
+}
+
+#sidebar:hover {
+  box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.5);
+}

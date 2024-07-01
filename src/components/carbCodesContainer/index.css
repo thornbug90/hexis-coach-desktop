@@ -1,0 +1,7 @@
+.cookie-icon {
+  fill: white;
+}
+
+.group:hover .cookie-icon {
+  fill: black;
+}

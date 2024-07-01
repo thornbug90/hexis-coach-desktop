@@ -1,0 +1,22 @@
+query getGroupsClients($groupClientsId: ID!) {
+  groupClients(id: $groupClientsId) {
+    id
+    firstName
+    lastName
+    dob
+    sex
+    favouriteActivities {
+      primary
+      activityId
+      activity {
+        id
+        name
+        slug
+      }
+    }
+    weight
+    weightUnit
+    goal
+    created
+  }
+}

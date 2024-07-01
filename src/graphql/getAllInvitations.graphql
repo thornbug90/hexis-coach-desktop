@@ -1,0 +1,21 @@
+query getAllInvitations {
+  listInvitations {
+    id
+    planId
+    code
+    payingCustomer {
+      customerId
+    }
+    status
+    fromUser {
+      id
+      customerId
+      firstName
+      lastName
+      email
+    }
+    created
+    expire
+    to
+  }
+}

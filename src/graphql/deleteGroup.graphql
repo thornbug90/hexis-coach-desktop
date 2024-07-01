@@ -1,0 +1,14 @@
+mutation deleteGroup($deleteGroupId: ID!) {
+  deleteGroup(id: $deleteGroupId) {
+    id
+    name
+    link
+    description
+    createdAt
+    coach {
+      id
+      firstName
+      lastName
+    }
+  }
+}

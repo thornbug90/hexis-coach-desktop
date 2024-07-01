@@ -1,0 +1,23 @@
+mutation deleteMeal($deleteMealId: ID!) {
+  deleteMeal(id: $deleteMealId) {
+    meals {
+      mealName
+      time
+      carbCode
+      energy
+      carb
+      fat
+      protein
+      mealType
+      mealSubType
+      mealVerification {
+        id
+        skipped
+        carbCode
+        time
+        energy
+        mealNutritionId
+      }
+    }
+  }
+}

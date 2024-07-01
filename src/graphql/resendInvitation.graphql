@@ -1,0 +1,21 @@
+mutation resendInvitation($invitationId: ID!) {
+  resendInvitation(invitationId: $invitationId) {
+    id
+    to
+    code
+    planId
+    status
+    fromUser {
+      id
+      customerId
+      firstName
+      lastName
+      email
+    }
+    payingCustomer {
+      customerId
+    }
+    created
+    expire
+  }
+}

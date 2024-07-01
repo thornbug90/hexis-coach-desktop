@@ -1,0 +1,42 @@
+mutation createWorkout($input: CreateWorkoutInput!, $userId: String) {
+  createWorkout(input: $input, userId: $userId) {
+    id
+    activity {
+      id
+      slug
+      name
+    }
+    title
+    description
+    intensity
+    start
+    end
+    key
+    competition
+    recurring
+    source
+    status
+    externalReference
+    intraFuelling
+    intraFuellingPrompt
+    intraFuellingMeal {
+      mealName
+      time
+      carbCode
+      energy
+      carb
+      fat
+      protein
+      mealType
+      mealSubType
+      mealVerification {
+        id
+        skipped
+        carbCode
+        time
+        energy
+        mealNutritionId
+      }
+    }
+  }
+}

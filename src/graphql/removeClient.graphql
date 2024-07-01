@@ -1,0 +1,7 @@
+mutation removeClient($childId: ID) {
+  removeChild(childId: $childId) {
+    firstName
+    id
+    lastName
+  }
+}

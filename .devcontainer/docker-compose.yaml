@@ -1,7 +1,7 @@
-version: '3'
+version: "3"
 
 services:
-  backend:
+  coach-desktop:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
@@ -9,7 +9,4 @@ services:
     volumes:
       - ../..:/workspaces:cached
     environment:
-      REDIS_CONNECTION_STRING: redis://redis:6379
-  redis:
-    image: redis:7.2-alpine
-    restart: unless-stopped
+      ENV_VAR: example

@@ -1,0 +1,6 @@
+query availableSeats {
+  getMyEntitlements {
+    id
+    value
+  }
+}

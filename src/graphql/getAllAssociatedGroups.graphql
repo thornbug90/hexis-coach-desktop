@@ -1,0 +1,31 @@
+query getAllAssociatedGroups {
+  groups {
+    memberCount
+    group {
+      id
+      name
+      link
+      description
+      createdAt
+      coach {
+        id
+        firstName
+        lastName
+      }
+      clients {
+        id
+        firstName
+        lastName
+        dob
+        sex
+        weight
+        weightUnit
+        goal
+        favouriteActivities {
+          primary
+        }
+      }
+    }
+    memberCount
+  }
+}

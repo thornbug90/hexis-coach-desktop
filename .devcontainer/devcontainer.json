@@ -1,22 +1,20 @@
 {
-  "name": "Hexis Backend",
+  "name": "Hexis Coach Desktop Web App",
   "dockerComposeFile": ["docker-compose.yaml"],
-  "service": "backend",
-  "workspaceFolder": "/workspaces/backend",
+  "service": "coach-desktop",
+  "workspaceFolder": "/workspaces/coach-desktop",
   "customizations": {
     "vscode": {
       "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "GraphQL.vscode-graphql-syntax",
-        "Prisma.prisma",
         "redhat.vscode-yaml",
         "streetsidesoftware.code-spell-checker",
-        "yoavbls.pretty-ts-errors",
-        "orsenkucher.vscode-graphql"
+        "yoavbls.pretty-ts-errors"
       ]
     }
   },
-  "forwardPorts": [4001],
-  "postCreateCommand": "npm ci && cp .example.env .env"
+  "forwardPorts": [3000],
+  "postCreateCommand": "npm ci --legacy-peer-deps && cp .env.example .env"
 }
